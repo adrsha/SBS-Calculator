@@ -10,9 +10,9 @@ Step by step calculator jam-packed with tons of features you may or may not want
 
 **Screenshots.**
 Infinities, complex numbers, bracket completion, trigonometry.. 
-![Screen_shot_1](https://photos.app.goo.gl/H2QAPRu7VJofK1Y3A)
+![Preview1](./images/img2.png)
 Using the `..` indicator for previous answer and : to calculate expressions separately, yet at the same time.
-![Screen_shot_2](https://photos.app.goo.gl/x6ctZsbRx8fuJKVo6)
+![Preview2](./images/img1.png)
 
 Please know that this will have tons of bugs and is not meant for complete usage yet. But still.. i mean, it looks good enough, right?
 **Bugs found:**
