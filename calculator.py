@@ -13,7 +13,7 @@ asc_colors = {
     'yellow': '\u001b[33m',
     'cyan': '\u001b[34m',
     'magenta': '\u001b[35m',
-    'cyan': '\u001b[36m',
+    'blue': '\u001b[36m',
     'white': '\u001b[37m',
 }
 logo = f'''{asc_colors['red']}SBS Calculator
@@ -22,6 +22,7 @@ set_of_signs = ("+", "-", "*", "/", "^", "!")
 # global definitions of variables
 executable = True
 continuable = False
+
 prev = ""
 
 color_boolean = input("Does your device support ANSI colors?(y/n) ")
@@ -50,6 +51,7 @@ prev_ans = None
 cardin = -1
 brackets = [["(", ")"], ["{", "}"], ["[", "]"], ["|", "|"]]
 # >-> >-> >-> >-> >-> >-> >-> >-> >-> >-> >-> >-> >-> >-> >-> >-> >-> >->
+
 while executable:
     try:
         continue_index = 0
@@ -70,7 +72,7 @@ while executable:
             os.execl(sys.executable, sys.executable, *sys.argv)
         if user_input.lower() == "cls" or user_input == "clear":
             os.system('cls' if os.name == 'nt' else 'clear')
-            print(logo+f'''
+            print(logo + f'''
     {asc_colors['green']}Enter h for help.{asc_colors['cyan']} (Steps enabled){asc_colors['white']}
     \n                                                                    ''')
             continue

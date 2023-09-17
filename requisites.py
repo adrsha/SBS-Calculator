@@ -1,4 +1,5 @@
 import re
+
 set_of_signs = ("+", "-", "*", "/", "^", "!")
 brackets = [["(", ")"], ["{", "}"], ["[", "]"], ["|", "|"]]
 
@@ -25,7 +26,7 @@ def prev_next_chars(entry, main_index, include_space):
     bracket_skip = 0
     while prevSpaceNotFound:
         temp_i -= 1
-        if (temp_i <= 0):
+        if temp_i <= 0:
             prev_index = 0
             break
         for bracket in brackets:
@@ -34,8 +35,16 @@ def prev_next_chars(entry, main_index, include_space):
             if entry[temp_i] == bracket[0]:
                 prev_index = temp_i + 1
                 prevSpaceNotFound = False
-            elif entry[temp_i] == " " or entry[temp_i] == ":" or entry[temp_i-1:temp_i+1] == " - " or entry[temp_i-1:temp_i+1] == " + " or entry[temp_i-1:temp_i+1] == " * " or entry[temp_i-1:temp_i+1] == " / " or entry[temp_i-1:temp_i+1] == " ^ ":
-                prev_index = temp_i+1
+            elif (
+                entry[temp_i] == " "
+                or entry[temp_i] == ":"
+                or entry[temp_i - 1 : temp_i + 1] == " - "
+                or entry[temp_i - 1 : temp_i + 1] == " + "
+                or entry[temp_i - 1 : temp_i + 1] == " * "
+                or entry[temp_i - 1 : temp_i + 1] == " / "
+                or entry[temp_i - 1 : temp_i + 1] == " ^ "
+            ):
+                prev_index = temp_i + 1
                 prevSpaceNotFound = False
 
     if include_space:
@@ -44,7 +53,7 @@ def prev_next_chars(entry, main_index, include_space):
         temp_i = main_index
     bracket_skip = 0
     while nextSpaceNotFound:
-        if (temp_i >= len(entry)-1):
+        if temp_i >= len(entry) - 1:
             next_index = len(entry)
             break
         for bracket in brackets:
@@ -52,12 +61,19 @@ def prev_next_chars(entry, main_index, include_space):
             #     f'''{main_index} Characters: length:{len(entry)}, tempi:{temp_i}''')
             if entry[temp_i] == bracket[0]:
                 bracket_skip += 1
-            if entry[temp_i-1] == "j":
+            if entry[temp_i - 1] == "j":
                 if entry[temp_i] == " " or entry[temp_i] == bracket[1] or entry[temp_i] == ":":
                     next_index = temp_i
                     nextSpaceNotFound = False
-            elif entry[temp_i] == " " or entry[temp_i-1:temp_i+1] == " - " or entry[temp_i-1:temp_i+1] == " + " or entry[temp_i-1:temp_i+1] == " * " or entry[temp_i-1:temp_i+1] == " / " or entry[temp_i-1:temp_i+1] == " ^ ":
-                next_index = temp_i+1
+            elif (
+                entry[temp_i] == " "
+                or entry[temp_i - 1 : temp_i + 1] == " - "
+                or entry[temp_i - 1 : temp_i + 1] == " + "
+                or entry[temp_i - 1 : temp_i + 1] == " * "
+                or entry[temp_i - 1 : temp_i + 1] == " / "
+                or entry[temp_i - 1 : temp_i + 1] == " ^ "
+            ):
+                next_index = temp_i + 1
                 nextSpaceNotFound = False
             elif entry[temp_i] == bracket[1] or entry[temp_i] == ":":
                 next_index = temp_i
@@ -81,7 +97,7 @@ def CenterOf_bracket_from_in(bracket, initI, endI, entry):
     value_indexes = []
     us_entry = entry[initI:endI]
     if bracket[0] == bracket[1]:
-        half_amt = len(re.findall(f"\{bracket[0]}", us_entry))/2
+        half_amt = len(re.findall(f"\{bracket[0]}", us_entry)) / 2
         for i, a in enumerate(us_entry, start=0):
             left_str = us_entry[:i]
             right_str = us_entry[i:]
@@ -95,4 +111,4 @@ def CenterOf_bracket_from_in(bracket, initI, endI, entry):
         brac0End = findLastIndex(us_entry, bracket[0])
         brac1Start = us_entry.find(bracket[1], brac0End)
         if brac0End != -1 and brac1Start != -1:
-            return [brac0End+1, brac1Start, bracket]
+            return [brac0End + 1, brac1Start, bracket]
